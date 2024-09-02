@@ -12,6 +12,14 @@
             @endforeach
             </div>
         @endif
+
+         @if($session()->has('errors'))
+         <div class="alert alert-danger">{{session('error')}}</div> 
+          @endif
+           
+          @if($session()->has('success'))
+         <div class="alert alert-success">{{session('success')}}</div> 
+          @endif
     </div>
     <form   action="{{route('registration.post')}}" method="POST" class="w-100"  style="max-width: 500px;">
     @csrf
