@@ -4,6 +4,15 @@
 
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="mt-5">
+        @if ($errors->any())
+            <div class="col-12">
+            @foreach ($errors->all() as $errors)
+                <div class="alert alert-danger">{{$errors}}</div>
+            @endforeach
+            </div>
+        @endif
+    </div>
     <form   action="{{route('registration.post')}}" method="POST" class="w-100"  style="max-width: 500px;">
     @csrf
         <div class="mb-3">
