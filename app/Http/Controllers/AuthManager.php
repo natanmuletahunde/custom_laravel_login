@@ -26,10 +26,9 @@ class AuthManager extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {  // Use the Auth facade
-            return redirect()->intended();  // Redirect to the intended page
-        } else {
-            return redirect()->back()->withErrors(['email' => 'Invalid credentials!']);
-        }
+        if (Auth::attempt($credentials)) {  
+            return redirect()->intended(route(name:'home'));  
+        } 
+        return redirect(route(name:'login'))->with('error','login details are not valid ');
     }
 }
