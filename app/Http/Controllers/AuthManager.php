@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User; // Ensure that the User model is imported
@@ -49,9 +50,14 @@ class AuthManager extends Controller
         $user = User::create($data);
 
         if (!$user) {
-            return redirect(route('login'))->with('error', 'Registration failed, please try again.');
+            return redirect(route('registration'))->with('error', 'Registration failed, please try again.');
         }
 
         return redirect(route('login'))->with('success', 'Registration successful, please login.');
+    }
+    function logout(){
+      session::flush();
+      auth::logout();
+      return redirect(route('login'));
     }
 }
