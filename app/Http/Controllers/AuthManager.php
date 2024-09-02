@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthManager extends Controller
 {
@@ -39,5 +40,11 @@ class AuthManager extends Controller
             'password' => 'required'
           ] );
           $data['name'] = $request->name;
+          $data['email'] = $request->email;
+          $data['password'] = Hash::make( $request->password);
+          $user= User::create($data);
+
+
+
     }
 }
