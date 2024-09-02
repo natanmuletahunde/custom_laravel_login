@@ -31,4 +31,13 @@ class AuthManager extends Controller
         } 
         return redirect(route(name:'login'))->with('error','login details are not valid ');
     }
+    function registrationppost(Request $request){
+      $request->validate(
+          [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required'
+          ] );
+          $data['name'] = $request->name;
+    }
 }
