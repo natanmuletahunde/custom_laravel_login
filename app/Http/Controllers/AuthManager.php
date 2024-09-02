@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User; // Ensure that the User model is imported
 
 class AuthManager extends Controller
 {
@@ -27,24 +28,30 @@ class AuthManager extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {  
-            return redirect()->intended(route(name:'home'))->with('success','login successful'); 
-        } 
-        return redirect(route(name:'login'))->with('error','login details are not valid ');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended(route('home'))->with('success', 'Login successful');
+        }
+        return redirect(route('login'))->with('error', 'Login details are not valid');
     }
-    function registrationppost(Request $request){
-      $request->validate(
-          [
+
+    public function registrationPost(Request $request)
+    {
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required'
-          ] );
-          $data['name'] = $request->name;
-          $data['email'] = $request->email;
-          $data['password'] = Hash::make( $request->password);
-          $user= User::create($data);
+        ]);
 
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
 
+        $user = User::create($data);
 
+        if (!$user) {
+            return redirect(route('login'))->with('error', 'Registration failed, please try again.');
+        }
+
+        return redirect(route('login'))->with('success', 'Registration successful, please login.');
     }
 }
