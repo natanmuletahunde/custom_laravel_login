@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <form class="w-100" style="max-width: 500px;">
+    <form class="w-100"  style="max-width: 500px;">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
