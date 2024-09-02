@@ -5,6 +5,7 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <form   action="{{route('registration.post')}}" method="POST" class="w-100"  style="max-width: 500px;">
+    @csrf
         <div class="mb-3">
             <label  class="form-label">Full name</label>
             <input type="text" class="form-control" name="name" >

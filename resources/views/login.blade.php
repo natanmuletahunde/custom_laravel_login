@@ -5,6 +5,8 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <form  action="{{route('login.post')}}" method="POST" class="w-100"  style="max-width: 500px;">
+    @csrf   
+       
          <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" name="email"  >
