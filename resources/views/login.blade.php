@@ -1,9 +1,10 @@
 @extends('layout')
-@section('title','login')
-@section('content')
 
-<div class="container">
-     <form class="ms-auto m-auto" style="width: 500px;">
+@section('title','Login')
+
+@section('content')
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <form class="w-100" style="max-width: 500px;">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -17,7 +18,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>
 </div>
 @endsection
