@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-     <form style="width: 500px;">
+     <form class="ms-auto m-auto" style="width: 500px;">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -20,5 +20,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
 @endsection
